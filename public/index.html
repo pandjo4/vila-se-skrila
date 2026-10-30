@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="bs">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mystery Mansion</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="grain"></div>
-<header class="topbar"><div class="brand"><span class="brand-mark">✦</span><div><b>MYSTERY MANSION</b><small>THE LAST TESTAMENT</small></div></div><div class="top-actions"><span id="connection" class="connection">● Povezivanje</span><button id="muteBtn" class="icon-btn">♫</button></div></header>
+<header class="topbar"><div class="brand"><span class="brand-mark">✦</span><div><b>MYSTERY MANSION</b><small>THE LAST TESTAMENT</small></div></div><div class="top-actions"><span id="connection" class="connection">● Povezivanje</span></div></header>
 <main>
 <section id="lobbyScreen" class="screen">
   <div class="hero"><div class="eyebrow">A MURDER HAS OCCURRED</div><h1>Istina je<br><em>zaključana.</em></h1><p>Osam prostorija. Trideset dvije karte. Jedna tajna koju morate otkriti prije nego što vrijeme istekne.</p></div>
@@ -20,18 +20,18 @@
 <section id="gameScreen" class="screen hidden">
   <div class="game-head"><div><div class="eyebrow">CASE FILE Nº 008</div><h2>Ubistvo u vili <em>Blackwood</em></h2></div><div class="deadline"><small>PREOSTALI LJUDSKI POTEZI</small><b id="turnCount">0 / 80</b><div class="meter"><i id="turnMeter"></i></div></div></div>
   <div class="status-strip"><span id="turnLabel">Čeka se potez...</span><span id="energyLabel">ENERGIJA —</span><button id="endTurnBtn" class="gold-btn">ZAVRŠI POTEZ ↗</button></div>
-  <div class="game-layout">
-    <section class="board-panel panel"><div class="panel-head"><div><small>MANSION FLOOR PLAN</small><h3>Mapa vile</h3></div><div class="map-controls"><button id="zoomOut">−</button><button id="zoomIn">+</button><button id="resetZoom">↺</button></div></div><div id="boardViewport"><div id="board" class="board"></div></div><div class="board-legend"><span>● Tvoj istražitelj</span><span>◆ Prostorija</span><span>⌘ Tunel</span></div></section>
+  <button id="pendingQuestionBtn" class="pending-question hidden">✉ ČEKA TE PRIVATNO PITANJE — ODGOVORI</button><div class="game-layout">
+    <section class="board-panel panel" id="mapTab"><div class="panel-head"><div><small>MANSION FLOOR PLAN</small><h3>Mapa vile</h3></div><div class="map-controls"><button id="zoomOut">−</button><button id="zoomIn">+</button><button id="resetZoom">↺</button></div></div><div id="boardViewport"><div id="board" class="board"></div></div><div class="touch-pad" aria-label="Kontrole kretanja"><button data-move="0,-1" aria-label="Gore">↑</button><div><button data-move="-1,0" aria-label="Lijevo">←</button><button data-move="0,1" aria-label="Dolje">↓</button><button data-move="1,0" aria-label="Desno">→</button></div></div><div class="board-legend"><span>● Tvoj istražitelj</span><span>◆ Prostorija</span><span>⌘ Tunel</span></div></section>
     <aside class="side-column">
       <section class="panel action-panel"><div class="panel-head"><div><small>YOUR INVESTIGATION</small><h3>Akcije</h3></div><span class="energy-orb" id="energyOrb">8</span></div><div class="action-buttons"><button id="questionBtn">▤ Postavi pitanje <small>6 energije</small></button><button id="tunnelBtn">⌘ Koristi tunel <small>4 energije</small></button><button id="accuseBtn" class="accuse">⚑ Završna optužba <small>Jednom po igri</small></button></div><p class="hint">Kretanje: odaberi susjedno polje na mapi. Svaki korak košta 1 energiju.</p></section>
-      <section class="panel players-panel"><div class="panel-head"><div><small>THE INVESTIGATORS</small><h3>Igrači</h3></div></div><div id="gamePlayers" class="player-list"></div></section>
-      <section class="panel log-panel"><div class="panel-head"><div><small>RECENT EVENTS</small><h3>Dnevnik vile</h3></div></div><div id="activityLog" class="activity-log"></div></section>
+      <section class="panel players-panel" id="playersTab"><div class="panel-head"><div><small>THE INVESTIGATORS</small><h3>Igrači</h3></div></div><div id="gamePlayers" class="player-list"></div></section>
+      <section class="panel log-panel" id="logTab"><div class="panel-head"><div><small>RECENT EVENTS</small><h3>Dnevnik vile</h3></div></div><div id="activityLog" class="activity-log"></div></section>
     </aside>
   </div>
   <nav class="mobile-tabs"><button class="active" data-tab="mapTab">MAPA</button><button data-tab="cardsTab">KARTE</button><button data-tab="notesTab">BILJEŠKE</button><button data-tab="playersTab">IGRAČI</button><button data-tab="logTab">DNEVNIK</button></nav>
   <section class="lower-grid">
     <section class="panel cards-panel" id="cardsTab"><div class="panel-head"><div><small>PRIVATE EVIDENCE</small><h3>Moje karte</h3></div></div><div id="myCards" class="card-grid"></div><p class="hint">Ove karte sigurno nisu dio tajnog rješenja.</p></section>
-    <section class="panel notebook-panel" id="notesTab"><div class="panel-head"><div><small>DETECTIVE'S NOTEBOOK</small><h3>Detektivske bilješke</h3></div></div><div id="notebook" class="notebook"></div><textarea id="personalNotes" placeholder="Zapiši teorije, sumnje i zaključke..."></textarea></section>
+    <section class="panel notebook-panel" id="notesTab"><div class="panel-head"><div><small>DETECTIVE'S NOTEBOOK</small><h3>Detektivske bilješke</h3></div></div><p class="notebook-key">Potvrđeno = karta je poznata i nije dio tajnog rješenja. To ne znači da je drugi igrač još uvijek posjeduje.</p><div id="notebook" class="notebook"></div><textarea id="personalNotes" placeholder="Zapiši teorije, sumnje i zaključke..."></textarea></section>
   </section>
 </section>
 </main>
